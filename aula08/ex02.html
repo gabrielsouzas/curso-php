@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formularios em PHP</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+    <style>
+        div{
+            margin-top: 10px;
+            margin-left: 10px;
+        }
+
+        input {
+            margin: 10px;
+        }
+    </style>
+
+</head>
+<body>
+
+    <div>
+        <form action="idade02.php" method="get">
+            Nome: <input type="text" name="txtnome" id="txtnome01"><br>
+            Ano de Nascimento: <input type="number" name="txtanonasc" id="txtanonasc01">
+            <fieldset>
+                <legend>Sexo</legend>
+                <input type="radio" name="rdsexo" id="masc" value="homem" checked>
+                <label for="masc">Masculino</label><br/>
+                <input type="radio" name="rdsexo" id="fem" value="mulher">
+                <label for="fem">Feminino</label>
+            </fieldset>
+            <input type="submit" value="Calcular Idade" onclick="clicou()">
+        </form>
+    </div>
+    
+</body>
+<script>
+    var txtnasc = document.getElementById('txtanonasc01')
+    
+    function clicou() {
+        if (txtnasc.value.length == 0) {
+        alert('O ano de Nascimento não foi preenchido!')
+    }
+    }
+</script>
+</html>
