@@ -23,16 +23,20 @@
         $n1 = $_GET["nota1"];
         $n2 = $_GET["nota2"];
         $media = ($n1 + $n2)/2;
-        $situacao = "";
+        
         echo "<span>A média entre <strong>$n1</strong> e <strong>$n2</strong> é igual a <strong>$media</strong></span>";
-        if ($media > 7) {
-            $situacao = "APROVADO";
-        } else if ($media >= 4 || $media <= 7){
-            $situacao = "RECUPERAÇÃO";
-        } else {
-            $situacao = "REPROVADO";
+        
+        echo "<div><span>A situação do aluno é <strong>". cal_media($media) ."</strong></span></div>";
+
+        function cal_media($med){
+            if ($med > 7) {
+                return "APROVADO";
+            } else if ($med >= 4 || $med <= 7){
+                return "RECUPERAÇÃO";
+            } else {
+                return "REPROVADO";
+            }
         }
-        echo "<div><span>A situação do aluno é <strong>$situacao</strong></span></div>";
     ?>
     <div>
         <a href="nota01.html">Voltar</a>
