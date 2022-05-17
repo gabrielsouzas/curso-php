@@ -1,0 +1,16 @@
+@charset "UTF-*";
+
+div{
+    margin-top: 9px;
+    margin-left: 9px;
+}
+
+p {
+    margin: 5px;
+}
+
+.btn {
+    color: white;
+    background-color: rgba(40, 47, 82, 0.829);
+    margin-top: 5px;
+}
