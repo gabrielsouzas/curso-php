@@ -2,10 +2,34 @@
     include "./conexao.php";
     include_once "./bean/carro.php";
 
-    function inserir($carro){
-        $con = conectarbd();
+    function alterar($carro_salvar){
+        $con = conectarbdpdo();
+
+        $statement = $con->prepare("INSERT INTO carro(
+            carro_codigo, carro_marca, carro_cor, carro_aro, carro_conversivel, 
+            carro_placa, carro_tipo, carro_preco, carro_motor, carro_velocidademax)
+          VALUES (:carro_codigo, :carro_marca, :carro_cor, :carro_aro, :carro_conversivel, 
+            :carro_placa, :carro_tipo, :carro_preco, :carro_motor, :carro_velocidademax);");
 
 
+        $statement->bindParam(':carro_codigo', $carro_salvar['carro_codigo']);
+        $statement->bindParam(':carro_marca', $carro_salvar['carro_marca']);
+        $statement->bindParam(':carro_cor', $carro_salvar['carro_cor']);
+        $statement->bindParam(':carro_aro', $carro_salvar['carro_aro']);
+        $statement->bindParam(':carro_conversivel', $carro_salvar['carro_conversivel']);
+        $statement->bindParam(':carro_placa', $carro_salvar['carro_placa']);
+        $statement->bindParam(':carro_tipo', $carro_salvar['carro_tipo']);
+        $statement->bindParam(':carro_preco', $carro_salvar['carro_preco']);
+        $statement->bindParam(':carro_motor', $carro_salvar['carro_motor']);
+        $statement->bindParam(':carro_velocidademax', $carro_salvar['carro_velocidademax']);
+
+        if ($statement->execute()) {
+          echo "New record created successfully";
+        } else {
+          echo "Unable to create record";
+        }
+
+        pg_close($con);
     }
 
     function buscar_por_atributo($atributo, $conteudo){

@@ -24,6 +24,29 @@ function conectarbd(){
   return $con;
 }
 
+function conectarbdpdo(){
+  try {
+    $host= 'localhost';
+    $db = 'estudos';
+    $user = 'postgres';
+    $password = 'pingaiada';
+    $dsn = "pgsql:host=$host;port=5432;dbname=$db;";
+    // faz a conexão com a base de dados
+    $pdo = new PDO($dsn, $user, $password, [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]);
+  
+    return $pdo;
+    
+  } catch (PDOException $e) {
+    die($e->getMessage());
+  } finally {
+    if ($pdo) {
+      $pdo = null;
+    }
+  }
+
+  
+}
+
 // tira o resultado da busca da memória
 //pg_free_result($dados);
 ?>
