@@ -16,6 +16,14 @@ function buscar_carros(){
   return $dados;
 }
 
+function conectarbd(){
+  // conecta ao banco de dados
+  $con_string = "host=localhost port=5432 dbname=estudos user=postgres password=pingaiada";
+  $con = pg_connect($con_string) or die ("Nao foi possivel estabelecer uma conexao com o servidor PostGreSQL");
+
+  return $con;
+}
+
 // tira o resultado da busca da memória
 //pg_free_result($dados);
 ?>

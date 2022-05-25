@@ -66,3 +66,13 @@ th {
 .linktabela:hover {
     text-decoration: underline;
 }
+
+/* Tabela responsiva*/
+div#container {
+    overflow-x: auto;
+}
+
+#btn_tabela {
+    font-weight: bold;
+    color: rgb(10, 70, 138);
+}

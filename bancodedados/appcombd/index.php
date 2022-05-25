@@ -172,7 +172,11 @@
 		        do {
             ?>
             <tr>
-                <td><a href="#" class="linktabela"><?=$linha['carro_codigo']?></a></td>
+                <td>
+                  <form action="cadastro-carro.php" method="get">
+                  <input class="btn" id="btn_tabela" type="submit" name="carro_selec" value="<?=$linha['carro_codigo']?>">
+                  </form>
+                </td>
                 <td><?=$linha['carro_marca']?></td>
                 <td><?=$linha['carro_cor']?></td>
                 <td><?=$linha['carro_aro']?></td>
