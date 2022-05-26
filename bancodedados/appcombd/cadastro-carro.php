@@ -69,7 +69,14 @@
             */
             if(isset($_POST["carrosalvar"])){
                 $carro_salvar = json_decode($_POST['carrosalvar']); 
-                alterar($carro_salvar);
+                /*alterar($carro_salvar);*/
+
+                if (alterar($carro_salvar)) {
+                    echo "<script type='javascript'>alert('Email enviado com Sucesso!');";
+                    echo "javascript:window.location='index.php';</script>";
+                } else {
+                    echo "<script type='javascript'>alert('Email enviado com Sucesso!');";
+                }
             }
 
         ?>
@@ -121,7 +128,7 @@
     </div>
 
         <div>
-            <a class="btn" href="javascript:history.go(-1)">Voltar</a>
+            <a class="btn" href="index.php">Voltar</a>
         </div>
         
 
@@ -129,8 +136,11 @@
         <script type="text/javascript">
             /* Botão que ao clicar executara os métodos para salvamento de um carro */
             var btnsalvar = document.getElementById('btnsalvar'); 
-
-            /* Objeto carro que recebe todos os atributos passados pelo html */
+            
+            /* Listener que fica escutando o botão Salvar, que ao clicar chama o método POST que está no inicio da tela em PHP que faz a alteração/inserção de um carro*/
+            btnsalvar.addEventListener('click', function(e){ 
+            
+                /* Objeto carro que recebe todos os atributos passados pelo html */
             let carro = {
                     carro_codigo: (document.getElementById('cod')).value,
                     carro_marca: (document.getElementById('mar')).value,
@@ -143,9 +153,7 @@
                     carro_motor: (document.getElementById('mot')).value,
                     carro_velocidademax: (document.getElementById('vel')).value,
                 };
-            
-            /* Listener que fica escutando o botão Salvar, que ao clicar chama o método POST que está no inicio da tela em PHP que faz a alteração/inserção de um carro*/
-            btnsalvar.addEventListener('click', function(e){ 
+
                 var form = document.getElementById('form'); 
                 var m = document.createElement("INPUT"); 
                 m.setAttribute("type", "hidden"); 
