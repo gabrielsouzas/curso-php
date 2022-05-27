@@ -6,9 +6,9 @@
     $dados = filter_input_array(INPUT_POST, FILTER_DEFAULT);
 
     // Valida o formulário
-    if (empty($dados['codigo'])) {
+    /*if (empty($dados['codigo'])) {
         $retorna = ['status' => false, 'msg' => "<div> class='alert alert-danger role='alert'>Erro: Necessário preencher o campo código!</div>"];
-    } elseif (empty($dados['marca'])) {
+    } else*/if (empty($dados['marca'])) {
         $retorna = ['status' => false, 'msg' => "<div> class='alert alert-danger role='alert'>Erro: Necessário preencher o campo marca!</div>"];
     } elseif (empty($dados['cor'])) {
         $retorna = ['status' => false, 'msg' => "<div> class='alert alert-danger role='alert'>Erro: Necessário preencher o campo cor!</div>"];
@@ -29,14 +29,14 @@
     } else {
         // Cadastrar no BD
         $query = "INSERT INTO carro(
-            carro_codigo, carro_marca, carro_cor, carro_aro, carro_conversivel, 
+            carro_marca, carro_cor, carro_aro, carro_conversivel, 
             carro_placa, carro_tipo, carro_preco, carro_motor, carro_velocidademax)
-          VALUES (:carro_codigo, :carro_marca, :carro_cor, :carro_aro, :carro_conversivel, 
+          VALUES (:carro_marca, :carro_cor, :carro_aro, :carro_conversivel, 
             :carro_placa, :carro_tipo, :carro_preco, :carro_motor, :carro_velocidademax);";
         
         $cad_carro_stm = $connpdo->prepare($query);
 
-        $cad_carro_stm->bindParam(':carro_codigo', $dados['codigo']);
+        //$cad_carro_stm->bindParam(':carro_codigo', $dados['codigo']);
         $cad_carro_stm->bindParam(':carro_marca', $dados['marca']);
         $cad_carro_stm->bindParam(':carro_cor', $dados['cor']);
         $cad_carro_stm->bindParam(':carro_aro', $dados['aro']);
@@ -54,9 +54,13 @@
 
         // Verificar se cadastrou corretamente
         if ($cad_carro_stm->rowCount()) {
-            $retorna = ['status' => true, 'msg' => "<div> class='alert alert-sucess role='alert'>Carro cadastrado com sucesso!!</div>"];
+            $retorna = ['status' => true, 'msg' => "<div class='alert alert-success' role='alert'>
+            Carro cadastrado com Sucesso!
+          </div>"];
         } else {
-            $retorna = ['status' => false, 'msg' => "<div> class='alert alert-danger role='alert'>Erro: carro não cadastrado!</div>"];
+            $retorna = ['status' => false, 'msg' => "<div class='alert alert-danger' role='alert'>
+            Erro: Carro não cadastrado!
+          </div>"];
         }
         
     }

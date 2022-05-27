@@ -54,21 +54,23 @@ if (!empty($pagina)) {
             extract($linha);
             $dados .= "<tr>";
 
-            $dados .= "<td scope='col'>$carro_codigo</td>";
-            $dados .= "<td scope='col'>$carro_marca</td>";
-            $dados .= "<td scope='col'>$carro_cor</td>";
-            $dados .= "<td scope='col'>$carro_aro</td>";
-            $dados .= "<td scope='col'>$carro_conversivel</td>";
-            $dados .= "<td scope='col'>$carro_placa</td>";
-            $dados .= "<td scope='col'>$carro_tipo</td>";
-            $dados .= "<td scope='col'>$carro_preco</td>";
-            $dados .= "<td scope='col'>$carro_motor</td>";
-            $dados .= "<td scope='col'>$carro_velocidademax</td>";
-            $dados .= "<td> 
-            <form id='visualizar'>
-            <input class='btn btn-outline-secondary' id='btn_tabela' type='submit' name='carro_selec' value='Visualizar'>
-            </form>
-            </td>";
+            $dados .= "<td>$carro_codigo</td>";
+            $dados .= "<td>$carro_marca</td>";
+            $dados .= "<td>$carro_cor</td>";
+            $dados .= "<td>$carro_aro</td>";
+            $dados .= "<td>$carro_conversivel</td>";
+            $dados .= "<td>$carro_placa</td>";
+            $dados .= "<td>$carro_tipo</td>";
+            $dados .= "<td>$carro_preco</td>";
+            $dados .= "<td>$carro_motor</td>";
+            $dados .= "<td>$carro_velocidademax</td>";
+            $dados .= "<td>";
+            $dados .= "<div class='d-grid gap-30 d-md-block'>";
+            $dados .= "<a href='#' class='btn btn-outline-primary btn-sm' onclick='visCarro($carro_codigo)'>Visualizar</a>";
+            $dados .= "<a href='#' class='btn btn-outline-warning btn-sm' id='btneditar' onclick='visCarro($carro_codigo)'>Editar</a>";
+            $dados .= "<a href='#' class='btn btn-outline-danger btn-sm' id='btnapagar' onclick='visCarro($carro_codigo)'>Apagar</a>";
+            $dados .= "</div>";
+            $dados .= "</td>";
 
             $dados .= "</tr>";
         }
@@ -86,19 +88,49 @@ if (!empty($pagina)) {
         // Pega a qtde de linhas atraves do alias num_result
         $quantidade_pg = ceil($row_pg['num_result'] / $qnt_result_pg);
 
-        $dados .= "<nav aria-label='Page navigation example'>
-        <ul class='pagination justify-content-center'>
-          <li class='page-item disabled'>
-            <a class='page-link'>Anterior</a>
-          </li>
-          <li class='page-item'><a class='page-link' href='#'>1</a></li>
-          <li class='page-item'><a class='page-link' href='#'>2</a></li>
-          <li class='page-item'><a class='page-link' href='#'>3</a></li>
-          <li class='page-item'>
-            <a class='page-link' href='#'>Próxima</a>
-          </li>
-        </ul>
-      </nav>";
+        // Quantidade de links de páginas na tela
+        $max_links = 2;
+
+        $dados .= "<nav aria-label='Page navigation example'>";
+        $dados .= "<ul class='pagination justify-content-center'>";
+
+        // Primeira página
+        $dados .= "<li class='page-item'><a class='page-link' href='#' onclick='listarCarros(1)'>Primeira</a></li>";
+
+        // Botão Anterior
+        $ant_pag = $pagina;
+        if (($pagina - 1) >= 1) {
+          $ant_pag = $pagina - 1;
+        }
+        $dados .= "<li class='page-item'><a class='page-link' href='#' onclick='listarCarros($ant_pag)'>Anterior</a></li>";
+        
+        // Imprime os links baseado na $max_links (Botões numerados anteriores)
+        for ($pag_ant = $pagina - $max_links; $pag_ant <= $pagina - 1; $pag_ant++) { 
+          if ($pag_ant >= 1) {
+            $dados .= "<li class='page-item'><a class='page-link' href='#' onclick='listarCarros($pag_ant)'>$pag_ant</a></li>";
+          }
+        }
+
+        $dados .= "<li class='page-item active'><a class='page-link' href='#'>$pagina</a></li>";
+
+        // Imprime os links baseado na $max_links (Botões numerados posteriores)
+        for ($pag_dep = $pagina + 1; $pag_dep <= $pagina + $max_links; $pag_dep++) { 
+          if ($pag_dep <= $quantidade_pg) {
+            $dados .= "<li class='page-item'><a class='page-link' href='#' onclick='listarCarros($pag_dep)'>$pag_dep</a></li>";
+          }
+        }
+
+        // Botão Próximo
+        $prox_pag = $pagina;
+        if (($pagina + 1) <= $quantidade_pg) {
+          $prox_pag = $pagina + 1;
+        }
+        $dados .= "<li class='page-item'><a class='page-link' href='#' onclick='listarCarros($prox_pag)' >Próxima</a></li>";
+
+        // Última página
+        $dados .= "<li class='page-item'><a class='page-link' href='#' onclick='listarCarros($quantidade_pg)'>Última</a></li>";
+        $dados .= "</ul>";
+        $dados .= "</nav>";
         
         $retorna = ['status' => true, 'dados' => $dados];
     } else {

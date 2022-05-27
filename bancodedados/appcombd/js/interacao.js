@@ -23,8 +23,6 @@ listarCarros(1);
 // Cadastro de carro no Banco de Dados em PHP
 const cadCarroForm = document.getElementById("cad-carro-form")
 
-document.getElementById("cad-carro-btn").value = "Salvando..."
-
 // Recebee o SELETOR da janela modal
 const cadCarroModal = new bootstrap.Modal(document.getElementById("cadCarroModal"))
 
@@ -41,6 +39,8 @@ if (cadCarroForm) {
         // Esse log vai aparecer em inspecionar >> console >> info 
 
         const dadosForm = new FormData(cadCarroForm);
+
+        document.getElementById("cad-carro-btn").value = "Salvando..."
 
         // Aguarda o retorno da inserção
         const dados = await fetch("controller/inserir-carro.php", {
@@ -60,9 +60,42 @@ if (cadCarroForm) {
             document.getElementById("msgAlerta").innerHTML = resposta['msg'];
             cadCarroForm.reset();
             cadCarroModal.hide();
-            //listarCarros();
+            listarCarros(1);
         }
         document.getElementById("cad-carro-btn").value = "Salvar"
 
     })
+}
+
+// Visualizar os dados do Carro
+// async porque usa o await que espera a execução de algum retorno de dados antes de prosseguir para o próximo comando dentro da função
+async function visCarro(codigo){
+    //console.log(codigo)
+    
+    // Se não utilizar o await ele não aguarda finalizar o retorno dos dados
+    const dados = await fetch('./controller/visualizar-carro.php?codigo=' + codigo);
+
+    // Recebe os dados processsados e transforma em objeto com json
+    const resposta = await dados.json();
+
+    //console.log(resposta)
+
+    if(!resposta['status']){
+        document.getElementById('msgAlerta').innerHTML = resposta['msg']
+    } else {
+        document.getElementById('msgAlerta').innerHTML = ""
+        const visModal = new bootstrap.Modal(document.getElementById("visCarroModal"));
+        visModal.show()
+
+        document.getElementById("codCarro").innerHTML = resposta['dados'].carro_codigo;
+        document.getElementById("marcaCarro").innerHTML = resposta['dados'].carro_marca;
+        document.getElementById("corCarro").innerHTML = resposta['dados'].carro_cor;
+        document.getElementById("aroCarro").innerHTML = resposta['dados'].carro_aro;
+        document.getElementById("conversivelCarro").innerHTML = resposta['dados'].carro_conversivel;
+        document.getElementById("placaCarro").innerHTML = resposta['dados'].carro_placa;
+        document.getElementById("tipoCarro").innerHTML = resposta['dados'].carro_tipo;
+        document.getElementById("precoCarro").innerHTML = resposta['dados'].carro_preco;
+        document.getElementById("motorCarro").innerHTML = resposta['dados'].carro_motor;
+        document.getElementById("velmaxCarro").innerHTML = resposta['dados'].carro_velocidademax;
+    }
 }

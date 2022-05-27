@@ -8,10 +8,12 @@
     
     <link rel="canonical" href="https://getbootstrap.com/docs/5.2/examples/dashboard/">
     <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="css/estilo.css">    
     
     <!-- Estilo customizado para esse template -->
     <link href="css/dashboard.css" rel="stylesheet">
+    
+    <!-- Estilo manual -->
+    <link rel="stylesheet" href="css/estilo.css">    
   </head>
   <body>
   <?php
@@ -219,12 +221,12 @@
           <span id="msgAlertaErro"></span>
         <form id="cad-carro-form">
         
-        <div class="row mb-3">
+        <!--<div class="row mb-3">
           <label for="cod" class="col-sm-2 col-form-label">Código</label>
           <div class="col-sm-10">
             <input type="text" class="form-control" name="codigo" id="cod" required>
           </div>
-        </div>
+        </div>-->
         <div class="row mb-3">
         <label for="mar" class="col-sm-2 col-form-label">Marca:</label>
           <div class="col-sm-10">
@@ -289,11 +291,59 @@
   </div>
   <!-- Fim Model Cadastrar Carro-->
 
-    <script src="js/bootstrap.bundle.min.js"></script>
-    <script src="js/interacao.js"></script>
+  <!-- Inicio Model Visualizar Carro-->
+  <div class="modal fade" id="visCarroModal" tabindex="-1" aria-labelledby="visCarroModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="visCarroModalLabel">Visualizar Carro</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <span id="msgAlertaErroVis"></span>
+          <dl class="row">
+            <dt class="col-sm-3">Código</dt>
+            <dd class="col-sm-9"><span id="codCarro"></span></dd>
+            
+            <dt class="col-sm-3">Marca</dt>
+            <dd class="col-sm-9"><span id="marcaCarro"></span></dd>
+            
+            <dt class="col-sm-3">Cor</dt>
+            <dd class="col-sm-9"><span id="corCarro"></span></dd>
+            
+            <dt class="col-sm-3">Aro</dt>
+            <dd class="col-sm-9"><span id="aroCarro"></span></dd>
+            
+            <dt class="col-sm-3">Conversível</dt>
+            <dd class="col-sm-9"><span id="conversivelCarro"></span></dd>
+            
+            <dt class="col-sm-3">Placa</dt>
+            <dd class="col-sm-9"><span id="placaCarro"></span></dd>
+            
+            <dt class="col-sm-3">Tipo</dt>
+            <dd class="col-sm-9"><span id="tipoCarro"></span></dd>
+            
+            <dt class="col-sm-3">Preço</dt>
+            <dd class="col-sm-9"><span id="precoCarro"></span></dd>
+            
+            <dt class="col-sm-3">Motor</dt>
+            <dd class="col-sm-9"><span id="motorCarro"></span></dd>
+            
+            <dt class="col-sm-4">Velocidade Máx.</dt>
+            <dd class="col-sm-9"><span id="velmaxCarro"></span></dd>
+          </dl>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Fim Model Visualizar Carro-->
 
+    <script src="js/bootstrap.bundle.min.js"></script>
+    
       <script src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js" integrity="sha384-uO3SXW5IuS1ZpFPKugNNWqTZRRglnUJK6UAZ/gxOX80nxEkN9NcGZTftn6RzhGWE" crossorigin="anonymous"></script>
       <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js" integrity="sha384-zNy6FEbO50N+Cg5wap8IKA4M/ZnLJgzc6w2NqACZaK0u0FXfOWRRJOnQtpZun8ha" crossorigin="anonymous"></script>
       <script src="js/dashboard.js"></script>
-  </body>
+      
+      <script src="js/interacao.js"></script>
+    </body>
 </html>
