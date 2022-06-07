@@ -139,9 +139,9 @@
         
 
         <!--<canvas class="my-4 w-100" id="myChart" width="900" height="380"></canvas>-->
-        
-        <span id="msgAlerta"></span>
-        
+        <div>
+          <span id="msgAlerta"></span>
+        </div>
         <!--<div class="table-responsive">-->
             <span class="listar-carros"></span>
 
@@ -337,6 +337,91 @@
     </div>
   </div>
   <!-- Fim Model Visualizar Carro-->
+
+  <!-- Inicio Model Editar Carro-->
+  <div class="modal fade" id="editCarroModal" tabindex="-1" aria-labelledby="editCarroModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="editCarroModalLabel">Editar Carro</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+
+            <span id="msgAlertaErroEdit"></span>
+
+          <form id="edit-carro-form">
+          
+          <div class="row mb-3">
+            <label for="cod" class="col-sm-2 col-form-label">Código</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" name="codigo" id="editcod" readonly>
+            </div>
+          </div>
+
+          <div class="row mb-3">
+          <label for="mar" class="col-sm-2 col-form-label">Marca:</label>
+            <div class="col-sm-10">
+                  <input type="text" class="form-control" name="marca" id="editmar" required>
+            </div>
+          </div>
+          <div class="row mb-3">
+              <label for="cor" class="col-sm-2 col-form-label">Cor:</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" name="cor" id="editcor" required>
+            </div>
+          </div>
+          <div class="row mb-3">
+              <label for="aro" class="col-sm-2 col-form-label">Aro:</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" name="aro" id="editaro" required>
+            </div>
+          </div>
+          <div class="row mb-3">
+              <label for="con" class="col-sm-2 col-form-label">Conversível:</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" name="conversivel" id="editcon" required>
+            </div>
+          </div>
+          <div class="row mb-3">
+              <label for="pla" class="col-sm-2 col-form-label">Placa:</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" name="placa" id="editpla" required>
+            </div>
+          </div>
+          <div class="row mb-3">
+              <label for="tip" class="col-sm-2 col-form-label">Tipo:</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" name="tipo" id="edittip" required>
+            </div>
+          </div>
+          <div class="row mb-3">
+              <label for="pre" class="col-sm-2 col-form-label">Preço:</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" name="preco" id="editpre" required>
+            </div>
+          </div>
+          <div class="row mb-3">
+              <label for="mot" class="col-sm-2 col-form-label">Motor:</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" name="motor" id="editmot" required>
+            </div>
+          </div>
+          <div class="row mb-3">
+              <label for="vel" class="col-sm-2 col-form-label">Vel. Max:</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" name="velocidademax" id="editvel" required>
+            </div>
+          </div>
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+            <input type="submit" class="btn btn-primary" id="edit-carro-btn" value="Salvar">
+
+          </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Fim Model Editar Carro-->
 
     <script src="js/bootstrap.bundle.min.js"></script>
     

@@ -67,8 +67,8 @@ if (!empty($pagina)) {
             $dados .= "<td>";
             $dados .= "<div class='d-grid gap-30 d-md-block'>";
             $dados .= "<a href='#' class='btn btn-outline-primary btn-sm' onclick='visCarro($carro_codigo)'>Visualizar</a>";
-            $dados .= "<a href='#' class='btn btn-outline-warning btn-sm' id='btneditar' onclick='visCarro($carro_codigo)'>Editar</a>";
-            $dados .= "<a href='#' class='btn btn-outline-danger btn-sm' id='btnapagar' onclick='visCarro($carro_codigo)'>Apagar</a>";
+            $dados .= "<a href='#' class='btn btn-outline-warning btn-sm' id='btneditar' onclick='editCarro($carro_codigo)'>Editar</a>";
+            $dados .= "<a href='#' class='btn btn-outline-danger btn-sm' id='btnapagar' onclick='apagCarro($carro_codigo)'>Apagar</a>";
             $dados .= "</div>";
             $dados .= "</td>";
 
