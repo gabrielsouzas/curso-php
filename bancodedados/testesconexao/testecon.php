@@ -12,7 +12,7 @@
         //$bdcon = pg_connect("dbname=estudos");
         //conecta a um banco de dados chamado "estudos"
 
-        $con_string = "host=localhost port=5432 dbname=estudos user=postgres password=pingaiada";
+        $con_string = "host=localhost port=5432 dbname=estudos user=postgres password=admin";
         if(!$dbcon = pg_connect($con_string)) die ("Erro ao conectar ao banco<br>".pg_last_error($dbcon));
         //coneta a um banco de dados chamado "estudos" na máquina "localhost" com um usuário e senha
     ?>

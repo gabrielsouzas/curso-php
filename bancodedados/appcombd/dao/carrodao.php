@@ -8,7 +8,7 @@
         $host= 'localhost';
         $db = 'estudos';
         $user = 'postgres';
-        $password = 'pingaiada';
+        $password = 'admin';
         $dsn = "pgsql:host=$host;port=5432;dbname=$db;";
         // faz a conexão com a base de dados
         $pdo = new PDO($dsn, $user, $password, [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]);

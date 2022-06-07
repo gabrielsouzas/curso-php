@@ -3,9 +3,9 @@
 $servidor = "localhost";
 $db   = "estudos";
 $usuario = "5432";
-$senha = "pingaiada";
+$senha = "admin";
 // conecta ao banco de dados
-$con_string = "host=localhost port=5432 dbname=estudos user=postgres password=pingaiada";
+$con_string = "host=localhost port=5432 dbname=estudos user=postgres password=admin";
 $con = pg_connect($con_string) or die ("Nao foi possivel
   estabelecer uma conexao com o servidor PostGreSQL");
 // cria a instrução SQL que vai selecionar os dados

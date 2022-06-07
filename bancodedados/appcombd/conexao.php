@@ -4,7 +4,7 @@
     $host= 'localhost';
     $db = 'estudos';
     $user = 'postgres';
-    $password = 'pingaiada';
+    $password = 'admin';
     $dsn = "pgsql:host=$host;port=5432;dbname=$db;";
     // faz a conexão com a base de dados
     $connpdo = new PDO($dsn, $user, $password, [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]);
@@ -21,7 +21,7 @@
   
 function buscar_carros(){
   // conecta ao banco de dados
-  $con_string = "host=localhost port=5432 dbname=estudos user=postgres password=pingaiada";
+  $con_string = "host=localhost port=5432 dbname=estudos user=postgres password=admin";
   $con = pg_connect($con_string) or die ("Nao foi possivel estabelecer uma conexao com o servidor PostGreSQL");
   // cria a instrução SQL que vai selecionar os dados
   $query = "SELECT * FROM carro;";
@@ -37,7 +37,7 @@ function buscar_carros(){
 
 function conectarbd(){
   // conecta ao banco de dados
-  $con_string = "host=localhost port=5432 dbname=estudos user=postgres password=pingaiada";
+  $con_string = "host=localhost port=5432 dbname=estudos user=postgres password=admin";
   $con = pg_connect($con_string) or die ("Nao foi possivel estabelecer uma conexao com o servidor PostGreSQL");
 
   return $con;
@@ -48,7 +48,7 @@ function conectarbdpdo(){
     $host= 'localhost';
     $db = 'estudos';
     $user = 'postgres';
-    $password = 'pingaiada';
+    $password = 'admin';
     $dsn = "pgsql:host=$host;port=5432;dbname=$db;";
     // faz a conexão com a base de dados
     $pdo = new PDO($dsn, $user, $password, [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]);
