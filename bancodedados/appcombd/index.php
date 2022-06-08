@@ -1,3 +1,8 @@
+<?php
+      include_once "conexao.php";
+      include "protect.php";
+  ?>
+
 <!doctype html>
 <html lang="pt-br">
   <head>
@@ -16,23 +21,6 @@
     <link rel="stylesheet" href="css/estilo.css">    
   </head>
   <body>
-  <?php
-      include "conexao.php";
-    /* esse bloco de código em php verifica se existe a sessão, pois o usuário pode
-    simplesmente não fazer o login e digitar na barra de endereço do seu navegador
-    o caminho para a página principal do site (sistema), burlando assim a obrigação de
-    fazer um login, com isso se ele não estiver feito o login não será criado a session,
-    então ao verificar que a session não existe a página redireciona o mesmo
-    para a index.php.*/
-    session_start();
-    if((!isset ($_SESSION['usuario']) == true) and (!isset ($_SESSION['senha']) == true))
-    {
-      header('location:index.php');
-      }
-
-    $logado = $_SESSION['usuario'];
-  ?>
-      
   <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
     <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-6" href="#">Venda de Carros</a>
     <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
@@ -126,6 +114,7 @@
 
       <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
         <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+          <h3>Ben vindo <?php echo " " . $_SESSION['usuario']; ?></h3>
           <h1 class="h2">Carros</h1>
           <div class="btn-toolbar mb-2 mb-md-0">
             <div class="btn-group me-2">
